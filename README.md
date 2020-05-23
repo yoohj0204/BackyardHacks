@@ -1,7 +1,7 @@
 # BackyardHacks
 
 **How to clone from branch:**
-    ***git clone https://github.com/slee288/ru-hacks***  
+    ***git clone https://github.com/yoohj0204/BackyardHacks***  
 **How to pull from current branch**
     ***git pull origin dev***  
 
