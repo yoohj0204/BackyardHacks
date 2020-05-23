@@ -1,6 +1,6 @@
 import io
 from PIL import Image, ImageDraw, Image, ImageFont
-import cv2
+# import cv2
 
 def crop_image(pillow_image, bounding, image_size):
     width, height = image_size
