@@ -1,6 +1,4 @@
 import datetime
-from helper import render_hello
-from test import find_recipes
 import json
 import os
 

@@ -10,3 +10,13 @@
     ***pip3 install -r requirements.txt***  
     2. Run the script
     ***python3 main.py***  
+
+
+**Packages to install**  
+***Write whatever packages you install on here***
+    1. pytest-shutil  
+    2. gspread  
+    3. google-cloud-vision  
+    4. Pillow  
+    5. oauth2client  
+    6. Flask  
