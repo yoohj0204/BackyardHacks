@@ -1,3 +1,9 @@
+/* background music player styling */
 audio#bgm {
+    display: none;
+}
+
+/* Photo uploader style */
+input[type="file"], input[type="submit"] {
     display: none;
 }

@@ -2,8 +2,9 @@ import datetime
 import json
 import os
 
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, redirect
 from flask import make_response
+from VisionAPI_demo import process_image
 
 app = Flask(__name__, static_folder="public")
 app.config['SPOONACULAR_API_KEY'] = os.getenv('SPOONACULAR_API_KEY')
@@ -11,6 +12,24 @@ app.config['SPOONACULAR_API_KEY'] = os.getenv('SPOONACULAR_API_KEY')
 @app.route('/')
 def root():
     return render_template('macaroni-laboratory.html')
+
+@app.route("/upload", methods=["POST"])
+def upload_process():
+    if request.files:
+        req = request.files["visual"]
+
+        filename = "./images/" + req.filename
+        req.save(filename)
+        process_image(filename)
+
+        return redirect("https://creator.voiceflow.com/demo/4370061089187153", code=200)
+    else:
+        response = app.response_class(
+            response = json.dumps("error: no image received"),
+            status = 400,
+            mimetype = "application/json"
+        )
+        return response
 
 # @app.route("/api/food")
 # def show_foods():

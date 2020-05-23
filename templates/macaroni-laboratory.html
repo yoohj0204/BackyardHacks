@@ -31,11 +31,25 @@
         <div>
           <p class="paragraph-7">Your best quarantine cooking sidekick</p>
         </div>
-        <div class="macaherobuttons"><a data-w-id="032e3c0a-1151-5bb4-e1e3-a082332aa5f4" href="https://creator.voiceflow.com/project/jMmYKKg4dQ/prototype" class="macabutton w-inline-block"><img src="{{ url_for('static', filename='images/Group-2.svg') }}" alt=""></a><a data-w-id="e6746ff4-a1f8-4fa9-baf8-ffde996c520e" href="https://creator.voiceflow.com/project/15aoVV82dQ/prototype" class="macabutton w-inline-block"><img src="{{ url_for('static', filename='images/Group.svg') }}" alt=""></a></div>
+        <div class="macaherobuttons">
+            <form action="/upload" method="post" id="take-photo" enctype="multipart/form-data">
+                <label for="file-upload" class="custom-file-upload">
+                    <a data-w-id="032e3c0a-1151-5bb4-e1e3-a082332aa5f4" href="#" class="macabutton macabutton-camera w-inline-block">
+                        <img src="{{ url_for('static', filename='images/Group-2.svg') }}" alt="">
+                    </a>
+                    <input id="file-upload" type="file" name="visual" accept="image/*" onchange="triggerSubmit(event)" />
+                    <input id="file-submit" type="submit" name="submit" />
+                </label>
+            </form>
+            <a data-w-id="e6746ff4-a1f8-4fa9-baf8-ffde996c520e" href="https://creator.voiceflow.com/project/15aoVV82dQ/prototype" class="macabutton w-inline-block">
+                <img src="{{ url_for('static', filename='images/Group.svg') }}" alt="">
+            </a>
+        </div>
       </div>
     </div><img src="{{ url_for('static', filename='images/BB-1.svg') }}" width="297" alt="" class="image-16"></div>
-    <audio id="bgm" controls autoplay>
-        <source src="{{ url_for('static', filename='music/cooking.mp3') }}" type="audio/mpeg">
+    <audio id="bgm" controls autoplay repeat>
+        <!-- <source src="{{ url_for('static', filename='music/cooking.mp3') }}" type="audio/mpeg"> -->
+        <source src="{{ url_for('static', filename='music/rap.mp3') }}" type="audio/mpeg">
     </audio>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js?site=5e2c94fc60dc1a6dade8cbfe" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="{{ url_for('static', filename='js/webflow.js') }}" type="text/javascript"></script>

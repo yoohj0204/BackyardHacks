@@ -15,15 +15,8 @@ black_list = ["cuisine", "ingredient", "dish", "food", "foods", "family", "rice 
               "fried food", "breakfast", "junk food", "meat", "natural foods", "yellow", "black", "product",
               "vegetable", "plant", "leaf", "nose", "footwear", "hair", "neck", "powder"]
 
-file_name = "vegg2.jpg"
-image_path = os.path.join("./images/", file_name)
-
-with io.open(image_path, "rb") as image_file:
-    content = image_file.read()
-
-image = vision.types.Image(content=content)
-response = client.object_localization(image=image)
-localized_object_annotations = response.localized_object_annotations
+# file_name = "vegg2.jpg"
+# image_path = os.path.join("./images/", file_name)
 
 tag_list = []
 def filter_tag_list(label_list):
@@ -39,36 +32,44 @@ def filter_tag_list(label_list):
                 tag_list.append(new_label)
                 break
 
-index = 0
-dirpath = ""
-file_list = []
-for obj in localized_object_annotations:
-    pillow_image = Image.open(image_path)
-
-    img = crop_image(pillow_image, obj.bounding_poly, pillow_image.size)
-    dirname = "images/" + (pillow_image.filename.split("/")[-1]).split(".")[0]
-    dirpath = dirname
-
-    if not path.exists(dirname):
-        os.mkdir(dirname)
-
-    filename = dirname + "/" + str(index) + ".jpg"
-    img.save(filename)
-    file_list.append(filename)
-    index += 1
-
-
-for file in file_list:
-    with io.open(file, "rb") as image_file:
+def process_image(original_filename):
+    with io.open(original_filename, "rb") as image_file:
         content = image_file.read()
 
     image = vision.types.Image(content=content)
-    response = client.label_detection(image=image)
-    labels = response.label_annotations
-    filter_tag_list(labels)
+    response = client.object_localization(image=image)
+    localized_object_annotations = response.localized_object_annotations
 
-insert_in_sheet(tag_list)
-shutil.rmtree(dirpath)
+    index = 0
+    dirpath = ""
+    file_list = []
+    for obj in localized_object_annotations:
+        pillow_image = Image.open(original_filename)
+
+        img = crop_image(pillow_image, obj.bounding_poly, pillow_image.size)
+        dirname = "./images/" + (pillow_image.filename.split("/")[-1]).split(".")[0]
+        dirpath = dirname
+
+        if not path.exists(dirname):
+            os.mkdir(dirname)
+
+        filename = dirname + "/" + str(index) + ".jpg"
+        img.save(filename)
+        file_list.append(filename)
+        index += 1
+
+
+    for file in file_list:
+        with io.open(file, "rb") as image_file:
+            content = image_file.read()
+
+        image = vision.types.Image(content=content)
+        response = client.label_detection(image=image)
+        labels = response.label_annotations
+        filter_tag_list(labels)
+
+    insert_in_sheet(tag_list)
+    shutil.rmtree(dirpath)
 
 #
 # # Visualization purpose
