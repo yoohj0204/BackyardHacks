@@ -13,7 +13,16 @@ client = vision.ImageAnnotatorClient()
 black_list = ["cuisine", "ingredient", "dish", "food", "foods", "family", "rice noodles", "soup", "fruit", "dessert",
               "snack cake", "baked goods", "none", "produce", "staple food", "recipe", "comfort food", "green",
               "fried food", "breakfast", "junk food", "meat", "natural foods", "yellow", "black", "product",
-              "vegetable", "plant", "leaf", "nose", "footwear", "hair", "neck", "powder"]
+              "vegetable", "plant", "leaf", "nose", "footwear", "hair", "neck", "powder"
+              
+              "flower", "oil", "paper", "plastic", "utensils", "bottle", "glass", "preservatives", "sodium", 
+              "sulfate", "ammonium", "solvents", "games", "bleach", "oxydent","silicons", "parabens", "group"
+              "plastic bags", "napkins", "plates", "paper", "bleach", "natural", "herbal", "kettle", "spoon", 
+              "fork", "knife", "dog food", "cat food", "books", "bunny", "gluten", "phthalates", "insoluble", 
+              "formulas", "talc", "mineral", "sanitizer", "blocks", "doghnut", "ribbons", "item", "stack", "table",
+              "chopsticks", "candles", "needles", "board", "natural", "medicine", "fats", "animal oil", "musks", 
+              "paper plates", "plastic utensils", "sparkling", "scissors", "kits", "kettle", "books", "jar", 
+              "fragrances", "vanilla", "alcohol", "wine", "beer", "vodka", "dark", "bug", "calories", "object"]
 
 file_name = "vegg2.jpg"
 image_path = os.path.join("./images/", file_name)
