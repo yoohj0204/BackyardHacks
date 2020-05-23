@@ -15,7 +15,7 @@ black_list = ["cuisine", "ingredient", "dish", "food", "foods", "family", "rice 
               "fried food", "breakfast", "junk food", "meat", "natural foods", "yellow", "black", "product",
               "vegetable", "plant", "leaf", "nose", "footwear", "hair", "neck", "powder"
               
-              "flower", "oil", "paper", "plastic", "utensils", "bottle", "glass", "preservatives", "sodium", 
+              "flower", "paper", "plastic", "utensils", "bottle", "glass", "preservatives", "sodium", 
               "sulfate", "ammonium", "solvents", "games", "bleach", "oxydent","silicons", "parabens", "group"
               "plastic bags", "napkins", "plates", "paper", "bleach", "natural", "herbal", "kettle", "spoon", 
               "fork", "knife", "dog food", "cat food", "books", "bunny", "gluten", "phthalates", "insoluble", 
