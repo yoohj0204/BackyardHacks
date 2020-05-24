@@ -18,8 +18,8 @@ black_list = ["cuisine", "ingredient", "dish", "food", "foods", "family", "rice 
 # file_name = "vegg2.jpg"
 # image_path = os.path.join("./images/", file_name)
 
-tag_list = []
-def filter_tag_list(label_list):
+
+def filter_tag_list(label_list, tag_list):
     for label in label_list:
         new_label = label.description.split(" ")[-1].lower()
         # new_label = label.description.lower()
@@ -58,7 +58,7 @@ def process_image(original_filename):
         file_list.append(filename)
         index += 1
 
-
+    tag_list = []
     for file in file_list:
         with io.open(file, "rb") as image_file:
             content = image_file.read()
@@ -66,7 +66,7 @@ def process_image(original_filename):
         image = vision.types.Image(content=content)
         response = client.label_detection(image=image)
         labels = response.label_annotations
-        filter_tag_list(labels)
+        filter_tag_list(labels, tag_list)
 
     insert_in_sheet(tag_list)
     shutil.rmtree(dirpath)
