@@ -1,6 +1,8 @@
 env/
 .env
 creds.json
-keys.json
+peterspan-host.json
 app.yaml
 visionkey.json
+
+__pycache__/

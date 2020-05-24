@@ -17,3 +17,9 @@
 __pycache__/
 # Ignored by the build system
 /setup.cfg
+
+
+/public/music
+VisionAPI_demo.py
+pillow_util.py
+sheet.py
